@@ -9,6 +9,8 @@ export default async function HomePage() {
     .from('annonces')
     .select('*')
     .order('created_at', { ascending: false })
+    .throwOnError()
+    .catch(() => ({ data: [] as Annonce[] }))
 
   return (
     <div className="min-h-screen bg-green-50">
